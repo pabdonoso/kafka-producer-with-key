@@ -15,25 +15,7 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 public class KafkaProducer {
     private final KafkaTemplate<String, String> kafkaTemplate;
 
-    //@Value(value = "${kafka.topic.filerouter.name}")
-    //private String topic="registr.dbo.persons";
 
-/*    public void sendFileRouterMessage(String message) {
-
-        EventFileRouter event=new Gson().fromJson(message,EventFileRouter.class);
-        String jsonValue = new Gson().toJson(event.getValue());
-        ListenableFuture<SendResult<String, String>> future = kafkaTemplate.send(this.topic, event.getKey(),jsonValue);
-        future.addCallback(new ListenableFutureCallback<>() {
-            @Override
-            public void onSuccess(SendResult<String, String> result) {
-                log.info("==> [Producer] Send message at Topic "+topic);
-            }
-            @Override
-            public void onFailure(Throwable ex) {
-                log.error("Something went wrong with the message {} ", message);
-            }
-        });
-    }*/
 
     public void sendCDCMessage(String topic, String key, String value) {
 

@@ -20,11 +20,6 @@ public class KafkaController {
 
         CDCEvent cdcEvent=new Gson().fromJson(message,CDCEvent.class);
 
-        /*
-        String key=messageStatus.getPath()+"-"+messageStatus.getClient();
-        String message = new Gson().toJson(messageStatus);
-        */
-
         log.info("==> Receive CDC Rest Event:"+message);
         kafkaProducer.sendCDCMessage(cdcEvent.getTopic(),cdcEvent.getKey(),cdcEvent.getValue()) ;
         return ResponseEntity.ok(cdcEvent.getValue());
