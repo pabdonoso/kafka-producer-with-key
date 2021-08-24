@@ -3,5 +3,5 @@
 
 mvn clean package
 
-docker build  --tag kafka-producer-with-key:1.0 .
+docker build  --tag kafka-producer-with-key:1.1 .
 
