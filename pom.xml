@@ -45,6 +45,12 @@
             <artifactId>gson</artifactId>
             <!-- <version>${gson.version}</version> -->
         </dependency>
+        <dependency>
+        <groupId>org.springdoc</groupId>
+        <artifactId>springdoc-openapi-ui</artifactId>
+        <version>1.5.2</version>
+    </dependency>
+
 
     </dependencies>
 

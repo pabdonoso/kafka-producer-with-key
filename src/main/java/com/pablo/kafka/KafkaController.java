@@ -27,8 +27,9 @@ public class KafkaController {
     @PostMapping("/messages/send")
     public ResponseEntity<String> sendMessage(@RequestBody String message, @RequestParam String topic) {
 
+        log.info("==> Receive topic:"+topic);
         log.info("==> Receive Rest Event:"+message);
-        kafkaProducer.sendMessage(message, topic);
+        kafkaProducer.sendMessage(topic,message);
         return ResponseEntity.ok(message);
     }
 
