@@ -1,4 +1,4 @@
-package com.pablo.kafka;
+package com.pablo.kafka.events;
 
 import lombok.Data;
 

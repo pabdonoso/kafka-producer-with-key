@@ -1,4 +1,4 @@
-package com.pablo.kafka;
+/*package com.pablo.kafka;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +12,7 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 @Component
 @RequiredArgsConstructor
 @Slf4j
-public class KafkaProducer {
+public class KafkaProducer_OLD {
     private final KafkaTemplate<String, String> kafkaTemplate;
 
 
@@ -32,7 +32,21 @@ public class KafkaProducer {
         });
     }
 
-    public void sendMessage(String topic, String value) {
+    public void sendMessage(String topic, String key , String value) {
+
+        ListenableFuture<SendResult<String, String>> future = kafkaTemplate.send(topic, key, value);
+        future.addCallback(new ListenableFutureCallback<>() {
+            @Override
+            public void onSuccess(SendResult<String, String> result) {
+                log.info("==> [Producer] Send message at Topic "+topic);
+            }
+            @Override
+            public void onFailure(Throwable ex) {
+                log.error("Something went wrong with the message {} ", value);
+            }
+        });
+    }
+    public void sendMessage(String topic , String value) {
 
         ListenableFuture<SendResult<String, String>> future = kafkaTemplate.send(topic, value);
         future.addCallback(new ListenableFutureCallback<>() {
@@ -47,4 +61,4 @@ public class KafkaProducer {
         });
     }
 
-}
+}*/
